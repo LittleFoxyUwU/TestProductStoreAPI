@@ -133,7 +133,7 @@ $RECYCLE.BIN/
 _NCrunch*
 
 # Local Database
-Products.db
+Database.db
 
 # Rider Files
 .idea

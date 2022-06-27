@@ -9,9 +9,9 @@ using ProductStoreAPI.Models;
 
 namespace ProductStoreAPI.Migrations
 {
-    [DbContext(typeof(ProductDb))]
-    [Migration("20220611201602_InitialCreate")]
-    partial class InitialCreate
+    [DbContext(typeof(AppDatabase))]
+    [Migration("20220627225136_Products+Users")]
+    partial class ProductsUsers
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,28 @@ namespace ProductStoreAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("ProductStoreAPI.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }
