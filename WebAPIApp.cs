@@ -29,6 +29,8 @@ public static class WebApiApp
 
         builder.Services.AddEndpointsApiExplorer();
 
+        builder.Services.AddRazorPages();
+
         builder.Services.AddSqlite<AppDatabase>(connectionStringProducts);
 
         builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -60,6 +62,8 @@ public static class WebApiApp
 
         app.UseAuthorization();
 
+        app.MapRazorPages();
+        
         app.UseSwaggerUI(c => {
             c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProductStoreAPI API V1");
         });

@@ -134,6 +134,12 @@ _NCrunch*
 
 # Local Database
 Database.db
+Migrations/
+
+# Sqlite temp
+*.db-journal
+*.db-wal
+*.db-shm
 
 # Rider Files
 .idea

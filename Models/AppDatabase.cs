@@ -8,5 +8,5 @@ public class AppDatabase : DbContext
     
     public DbSet<User> Users { get; set; } = null!;
 
-    public AppDatabase(DbContextOptions options) : base(options) {}
+    public AppDatabase(DbContextOptions options) : base(options) {Database.EnsureCreated();}
 }

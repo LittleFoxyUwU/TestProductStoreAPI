@@ -1,0 +1,41 @@
+@page
+@using System.Security.Claims
+@model ProductStoreAPI.Pages.Index
+
+@{
+    Layout = null;
+    var path = Microsoft.AspNetCore.Http.Extensions.UriHelper.GetDisplayUrl(Request);
+    var user = HttpContext.User;
+    var userIdentity = user.Identity;
+    var userRole = user.FindFirst(ClaimTypes.Role)?.Value;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Welcome Page</title>
+</head>
+<body>
+<div>
+    <h1>Welcome to our ProductStore</h1>
+    @{
+        if (userIdentity is {IsAuthenticated: true })
+        {
+            <p style="color: blue">You are logged in as an @userRole @userIdentity?.Name</p>
+            <p> | <a href="@(path + "logout")">Logout</a>
+            @{if (userRole is "Admin" or "Worker")
+            {<a href="@(path + "swagger")">Swagger</a> <text> | </text>}} | </p>
+        }
+        else
+        {
+            <p> |
+                <a href="@(path + "register")">Register</a> |
+                <a href="@(path + "login")">Login</a> |
+            </p>
+        }
+    }
+</div>
+</body>
+</html>

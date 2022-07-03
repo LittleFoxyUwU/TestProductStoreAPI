@@ -1,0 +1,39 @@
+@page
+@using ProductStoreAPI
+@model ProductStoreAPI.Pages.Login
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Register</title>
+</head>
+<body>
+<div>
+    <h1>Register</h1>
+    <h4>@WebApiApp.AppName</h4>
+    <form method="post">
+        <p>
+            <label>Username</label><br/>
+            <input type="text" name="username"/>
+        </p>
+        <p>
+            <label>Password</label><br/>
+            <input type="password" name="password"/>
+        </p>
+        
+        <p><select itemtype="text" name="role">
+            <option value="Customer">Customer</option>
+            <option value="Worker">Worker</option>
+            <option value="Admin">Admin</option>
+        </select></p>
+        <input type="submit" value="Register"/>
+    </form>
+</div>
+</body>
+</html>
