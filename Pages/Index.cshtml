@@ -26,7 +26,7 @@
             <p style="color: blue">You are logged in as an @userRole @userIdentity?.Name</p>
             <p> | <a href="@(path + "logout")">Logout</a>
             @{if (userRole is "Admin" or "Worker")
-            {<a href="@(path + "swagger")">Swagger</a> <text> | </text>}} | </p>
+              {<text> | </text><a href="@(path + "swagger")">Swagger</a>}} | </p>
         }
         else
         {

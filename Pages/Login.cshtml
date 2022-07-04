@@ -12,6 +12,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Login</title>
+    <script src="lib/jquery-validation/dist/jquery.validate.min.js"></script>
 </head>
 <body>
 <div>
@@ -20,14 +21,19 @@
     <form method="post">
         <p>
             <label>Username</label><br/>
-            <input type="text" name="username"/>
+            <input type="text" name="username" required="required"/>
         </p>
         <p>
             <label>Password</label><br/>
-            <input type="password" name="password"/>
+            <input type="password" name="password" required="required"/>
         </p>
         <input type="submit" value="Login"/>
     </form>
+    @{ if (Request.Method == "POST")
+        {
+            <hr/>
+            <h3 style="color: red;">@Model.LoginErrorMessage</h3>
+        }}
 </div>
 </body>
 </html>

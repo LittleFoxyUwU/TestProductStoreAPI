@@ -31,7 +31,7 @@ public static class WebApiApp
 
         builder.Services.AddRazorPages();
 
-        builder.Services.AddSqlite<AppDatabase>(connectionStringProducts);
+        builder.Services.AddSqlite<StoreContext>(connectionStringProducts);
 
         builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(op =>
