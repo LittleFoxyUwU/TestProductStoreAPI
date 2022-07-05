@@ -1,13 +1,13 @@
 namespace ProductStoreAPI.Models;
 
-public class User
+public class StoreUser
 {
     public int Id { get; init; }
     public string Username { get; set; }
     public string Password { get; set; }
     public StoreRole? Role { get; set; }
     
-    public User(string username, string password, StoreRole? role = StoreRole.Worker)
+    public StoreUser(string username, string password, StoreRole? role = StoreRole.Worker)
     {
         Username = username;
         Password = password;
