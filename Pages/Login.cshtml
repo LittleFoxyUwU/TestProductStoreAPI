@@ -1,9 +1,10 @@
 @page
 @using ProductStoreAPI
-@model ProductStoreAPI.Pages.Login
+@model ProductStoreAPI.Pages.LoginPageModel
 
 @{
-    Layout = null;
+    Layout = "Shared/_Layout";
+    ViewData["Title"] = "Login";
 }
 
 <!DOCTYPE html>
@@ -12,7 +13,6 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Login</title>
-    <script src="lib/jquery-validation/dist/jquery.validate.min.js"></script>
 </head>
 <body>
 <div>

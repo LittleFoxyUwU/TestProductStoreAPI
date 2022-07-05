@@ -9,14 +9,13 @@ using ProductStoreAPI.Models;
 namespace ProductStoreAPI.Pages;
 
 [IgnoreAntiforgeryToken]
-public class Login : PageModel
+public class LoginPageModel : PageModel
 {
     private readonly StoreContext _context;
-    
-    [BindProperty]
-    public string LoginErrorMessage { get; set; }
-    
-    public Login(StoreContext context)
+
+    [BindProperty] public string LoginErrorMessage { get; set; } = "";
+
+    public LoginPageModel(StoreContext context)
     {
         _context = context;
     }
@@ -28,7 +27,8 @@ public class Login : PageModel
     public async Task<IActionResult> OnPostAsync()
     {
         var form = HttpContext.Request.Form;
-        var username = form["username"][0]!; // Form will always contain username and password
+        // Form will always contain username and password because of the client side validation
+        var username = form["username"][0]!; 
         var password = form["password"][0]!;
 
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username && u.Password == password);

@@ -1,9 +1,10 @@
 @page
 @using ProductStoreAPI
-@model ProductStoreAPI.Pages.Login
+@model ProductStoreAPI.Pages.LoginPageModel
 
 @{
-    Layout = null;
+    Layout = "Shared/_Layout";
+    ViewData["Title"] = "Register";
 }
 
 <!DOCTYPE html>
@@ -20,18 +21,21 @@
     <form method="post">
         <p>
             <label>Username</label><br/>
-            <input type="text" name="username" required="required" minlength="8" maxlength="20"/>
+            <input type="text" name="username" required="required" minlength="8" maxlength="20"
+                   aria-required="true"/>
         </p>
         <p>
             <label>Password</label><br/>
-            <input type="password" name="password" required="required" minlength="8"/>
+            <input type="password" name="password" required="required" minlength="8"
+                   aria-required="true"/>
         </p>
-        
-        <p><select itemtype="text" name="role">
-            <option value="Customer">Customer</option>
-            <option value="Worker">Worker</option>
-            <option value="Admin">Admin</option>
-        </select></p>
+        <p>
+            <select itemtype="text" name="role" required="required">
+                <option value="Customer">Customer</option>
+                <option value="Worker">Worker</option>
+                <option value="Admin">Admin</option>
+            </select>
+        </p>
         <input type="submit" value="Register"/>
     </form>
 </div>

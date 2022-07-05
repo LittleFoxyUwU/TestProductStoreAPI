@@ -9,24 +9,6 @@ var app = WebApiApp.AppInitialisator(args);
 
 #region Login and User Routes
 
-app.MapPost("/register", async (StoreContext db, HttpContext context) =>
-{
-    var form = context.Request.Form;
-    if (!form.ContainsKey("username") || !form.ContainsKey("password"))
-    {
-        return Results.BadRequest("Missing username or password");
-    }
-    var username = form["username"][0]!;
-    var password = form["password"][0]!;
-    var role = form["role"][0]!;
-    var user = await db.Users.FirstOrDefaultAsync(u => u.Username == username);
-    if (user != null) return Results.BadRequest("User with the same name already exists");
-    user = new User(username, password, User.StringToRole(role));
-    await db.Users.AddAsync(user);
-    await db.SaveChangesAsync();
-    return Results.Redirect("/login");
-});
-
 app.MapGet("/login_check", async (StoreContext db, HttpContext context) =>
 {
     var user = await db.Users.FirstOrDefaultAsync(u => u.Username == context.User.Identity.Name);

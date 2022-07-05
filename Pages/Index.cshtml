@@ -3,7 +3,8 @@
 @model ProductStoreAPI.Pages.Index
 
 @{
-    Layout = null;
+    Layout = "Shared/_Layout";
+    ViewData["Title"] = "Home";
     var path = Microsoft.AspNetCore.Http.Extensions.UriHelper.GetDisplayUrl(Request);
     var user = HttpContext.User;
     var userIdentity = user.Identity;
